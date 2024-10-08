@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.3')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'dev.langchain4j:langchain4j-open-ai:0.32.0'
+    implementation 'dev.langchain4j:langchain4j:0.32.0'
+    implementation 'org.slf4j:slf4j-nop:2.0.7'
+}
+
+test {
+    useJUnitPlatform()
+}
