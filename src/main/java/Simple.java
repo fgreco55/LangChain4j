@@ -11,6 +11,7 @@ public class Simple {
         var body = """
         {
             "model": "gpt-4",
+            "max_tokens": 1024,
             "messages": [
                 {
                     "role": "user",
