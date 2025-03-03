@@ -13,8 +13,9 @@ public class Joke {
             "model": "gpt-4",
             "messages": [
                 {"role": "user", "content": "Write a clever joke about Java programmers"},
-		        {"role": "system", "content": "You are a hilarious insult comic."}
-            ], "temperature": 0.7,
+		        {"role": "system", "content": "You are a hilarious comic who understands technology."}
+            ], 
+               "temperature": 0.9,
                "max_tokens": 50,
                "n": 3
         }
