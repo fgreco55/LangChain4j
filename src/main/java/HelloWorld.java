@@ -17,24 +17,16 @@ public class HelloWorld {
         ChatLanguageModel cmodel = OpenAiChatModel.builder()
                 .apiKey(apiKey)
                 .modelName(OpenAiChatModelName.GPT_4_O)
-                .temperature(0.3)
-                .timeout(Duration.ofSeconds(120))
-                .maxTokens(50)
                 .build();
 
         List<ChatMessage> messages = new ArrayList<>();
-
-        SystemMessage sysmsg = new SystemMessage("You are a polite Java expert.");
-        messages.add(sysmsg);
-
+        //UserMessage usrmsg = UserMessage.from("Why should I learn Java.");
         UserMessage usrmsg = UserMessage.from("Why should I learn Java.");
-        messages.add(usrmsg);
-        
-        sysmsg = new SystemMessage("Please respond in Italian");
-        messages.add(sysmsg);
+        //messages.add(usrmsg);
 
-        var answer = cmodel.generate(messages);
+        //var answer = cmodel.chat(messages);
+        var answer = cmodel.chat(usrmsg);
         
-        System.out.println(answer);
+        System.out.println(answer.aiMessage().text());
     }
 }
