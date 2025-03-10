@@ -19,15 +19,15 @@ public class HelloWorldSystem {
                 .timeout(Duration.ofSeconds(120))
                 .maxTokens(256)
                 .build();
-
+        System.out.println("Hello World System ---------------------");
         List<ChatMessage> messages = new ArrayList<>();
 
         SystemMessage sysmsg = new SystemMessage("""
-                    You are a polite Java expert explaining concepts to a grammar school child.
+                    You are a polite Java expert explaining concepts to a politician.
                 """);
         messages.add(sysmsg);
 
-        UserMessage usrmsg = UserMessage.from("Why should I learn Java.");
+        UserMessage usrmsg = UserMessage.from("Why should I learn Java lambdas?");
         messages.add(usrmsg);
 
         //sysmsg = new SystemMessage("Please respond in Italian");
