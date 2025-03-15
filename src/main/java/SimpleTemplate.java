@@ -19,11 +19,12 @@ public class SimpleTemplate {
                 .maxTokens(1024)
                 .build();
 
-        String myTemplate = "Please explain {{topic}} to a {{student_level}} student using a clear, succinct paragraph";
+        String myTemplate = "Please explain {{topic}} to a {{student_type}} using a clear, succinct paragraph";
         PromptTemplate promptTemplate = PromptTemplate.from(myTemplate);
+        
         Map<String, Object> variables = new HashMap<>();
-        variables.put("topic", "machine learning");
-        variables.put("student_level", "grammar school");
+        variables.put("topic", "politics");
+        variables.put("student_type", "java programmer");
 
         Prompt prompt = promptTemplate.apply(variables);
         String response = cmodel.chat(prompt.text());
