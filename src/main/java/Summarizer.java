@@ -44,25 +44,39 @@ public class Summarizer {
         }
     }
 
+    /**
+     * genPrompt(String fileName, String summary_level, String language)
+     * @param fileName - name of the file you want to send to the LLM
+     * @param summary_level - requested response level
+     * @param language - text language, ie, english, italian, french, hindi, etc
+     * @return String version of the prompt
+     */
     static public String genPrompt(String fileName, String summary_level, String language) {
         String myTemplate = """
-                Please create a summary from the following text at a {{level}} level using a clear, succinct paragraph
+                Please create a summary from the following text at a {{level}} level 
+                using a clear, succinct paragraph
                 that captures the essence of the text, highlighting key themes and insights.  
                 Respond in {{language}}.  {{file}}
                 """;
         PromptTemplate promptTemplate = PromptTemplate.from(myTemplate);
 
         Map<String, Object> variables = new HashMap<>();
+
         variables.put("level", summary_level);
         String pathname = System.getProperty("user.dir") + "/src/main/resources/" + fileName;
-        variables.put("file", TextfiletoString(pathname));
+        variables.put("file", textfileToString(pathname));
         variables.put("language", language);
 
         Prompt prompt = promptTemplate.apply(variables);
         return prompt.text();
     }
 
-    static public String TextfiletoString(String filename) {
+    /**
+     * textfileToString(String filename)
+     * @param filename - txt file to be converted into a string
+     * @return String representation of the file contents
+     */
+    static public String textfileToString(String filename) {
         String bigString = (String) null;
 
         try {
@@ -75,10 +89,16 @@ public class Summarizer {
         return bigString;
     }
 
+    /**
+     * getUserInput(String pstring)
+     * @param pstring - string that reminds the user what to enter
+     * @return What the user typed in
+     * minimal error checking...
+     */
     static public String getUserInput(String pstring) {
         String cmdline;
 
-        System.out.print(pstring);
+        System.out.print(pstring);    // prompt the user
         cmdline = new Scanner(System.in).nextLine();
         return cmdline.isBlank() ? "" : cmdline;
     }
