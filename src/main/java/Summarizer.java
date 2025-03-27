@@ -8,7 +8,6 @@ import dev.langchain4j.model.input.Prompt;
 import dev.langchain4j.model.input.PromptTemplate;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -16,8 +15,7 @@ import java.util.*;
 import static dev.langchain4j.model.anthropic.AnthropicChatModelName.CLAUDE_3_5_SONNET_20241022;
 
 public class Summarizer {
-    public static void main(String[] args) {
-        String cmdline;
+    public static void main(String[] args) throws IOException{
         List<ChatMessage> messages;
         SystemMessage sysmsg = SystemMessage.from("""
                 You are an expert administrator with expertise in summarizing complex texts
@@ -36,6 +34,9 @@ public class Summarizer {
             String level = getUserInput("Level> ");
             String language = getUserInput("Language> ");
 
+            if (fname.isEmpty() || level.isEmpty() || language.isEmpty())
+                continue;
+
             UserMessage usrmsg = UserMessage.from(genPrompt(fname, level, language));
             messages.add(usrmsg);
 
@@ -51,11 +52,11 @@ public class Summarizer {
      * @param language - text language, ie, english, italian, french, hindi, etc
      * @return String version of the prompt
      */
-    static public String genPrompt(String fileName, String summary_level, String language) {
+    static public String genPrompt(String fileName, String summary_level, String language) throws IOException {
         String myTemplate = """
-                Please create a summary from the following text at a {{level}} level 
+                Please create a summary from the following text at a {{level}} level
                 using a clear, succinct paragraph
-                that captures the essence of the text, highlighting key themes and insights.  
+                that captures the essence of the text, highlighting key themes and insights.
                 Respond in {{language}}.  {{file}}
                 """;
         PromptTemplate promptTemplate = PromptTemplate.from(myTemplate);
@@ -64,29 +65,11 @@ public class Summarizer {
 
         variables.put("level", summary_level);
         String pathname = System.getProperty("user.dir") + "/src/main/resources/" + fileName;
-        variables.put("file", textfileToString(pathname));
+        variables.put("file", new String(Files.readAllBytes(Path.of(pathname))));
         variables.put("language", language);
 
         Prompt prompt = promptTemplate.apply(variables);
         return prompt.text();
-    }
-
-    /**
-     * textfileToString(String filename)
-     * @param filename - txt file to be converted into a string
-     * @return String representation of the file contents
-     */
-    static public String textfileToString(String filename) {
-        String bigString = (String) null;
-
-        try {
-            Path path = Path.of(filename);
-            byte[] bytes = Files.readAllBytes(path);
-            bigString = new String(bytes, StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            System.err.println("***ERROR: Cannot read file. " + e.getMessage());
-        }
-        return bigString;
     }
 
     /**
