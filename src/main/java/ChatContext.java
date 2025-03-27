@@ -12,9 +12,9 @@ import java.util.Scanner;
 
 public class ChatContext {
     public static void main(String[] args) {
-        Scanner userinput; 
+        Scanner userinput;
         String cmdline;
-        ChatMemory chatMemory = MessageWindowChatMemory.withMaxMessages(1000);
+        ChatMemory chatMemory = MessageWindowChatMemory.withMaxMessages(100);
         ChatMessage cm;
 
         SystemMessage sysmsg = new SystemMessage("""
@@ -46,20 +46,6 @@ public class ChatContext {
 
             chatMemory.add(UserMessage.from(response));     // Add the response from the assistant
             chatMemory.add(UserMessage.from(cmdline));      // Add the prompt from the user
-
-            //dumpMemory(chatMemory);
         }
-    }
-    static void dumpMemory(ChatMemory chatMemory) {
-        List<ChatMessage> memory = chatMemory.messages();
-        System.out.println("============================");
-        for (ChatMessage m : memory) {
-            if (m instanceof SystemMessage) {
-                System.out.println("SystemMessage: " + m.toString());
-            } else if (m instanceof UserMessage) {
-                System.out.println("UserMessage: " + m.toString());
-            }
-        }
-        System.out.println("============================");
     }
 }
