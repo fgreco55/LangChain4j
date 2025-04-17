@@ -37,7 +37,6 @@ public class ChatContext {
                 continue;
 
             UserMessage usrmsg = UserMessage.from(cmdline);   // create the prompt
-            chatMemory.add(usrmsg);
 
             var answer = cmodel.chat(chatMemory.messages());  // send the context as messages and save the response
             var response = answer.aiMessage().text();
