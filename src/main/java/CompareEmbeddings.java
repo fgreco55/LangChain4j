@@ -21,7 +21,7 @@ public class CompareEmbeddings {
 
             double similarity = cosineSimilarity(FloatList2doubleArray(one), FloatList2doubleArray(two));
             System.out.println("Cosine Similarity: " + similarity);
-            System.out.println("Cosine Distance: " + (1 - similarity));
+            //System.out.println("Cosine Distance: " + (1 - similarity));
         }
 
         public static List<Float> getEmbeddingVec(EmbeddingModel model, String input) {
