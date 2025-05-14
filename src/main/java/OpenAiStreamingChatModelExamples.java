@@ -1,6 +1,6 @@
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.model.StreamingResponseHandler;
-import dev.langchain4j.model.chat.StreamingChatLanguageModel;
+import dev.langchain4j.model.chat.StreamingChatModel;
 import dev.langchain4j.model.openai.OpenAiStreamingChatModel;
 import dev.langchain4j.model.output.Response;
 
@@ -9,8 +9,8 @@ public class OpenAiStreamingChatModelExamples {
 
     public static void main(String[] args) {
 
-        StreamingChatLanguageModel model = OpenAiStreamingChatModel.withApiKey(System.getenv("OPENAI_API_KEY"));
-        model.generate("Give me the top 20 benefits of using Java", new StreamingResponseHandler<AiMessage>() {
+        /*StreamingChatLanguageModel model = OpenAiStreamingChatModel.withApiKey(System.getenv("OPENAI_API_KEY"));
+        model.chat("Give me the top 20 benefits of using Java", new StreamingResponseHandler<AiMessage>() {
 
             @Override
             public void onNext(String token) {
@@ -27,6 +27,6 @@ public class OpenAiStreamingChatModelExamples {
             public void onError(Throwable error) {
                 error.printStackTrace();
             }
-        });
+        });*/
     }
 }

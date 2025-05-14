@@ -16,12 +16,12 @@ public class CompareEmbeddings {
                     .modelName(TEXT_EMBEDDING_3_SMALL)
                     .build();
 
-            List<Float> one = getEmbeddingVec(model, "I like the java programming language.");
-            List<Float> two = getEmbeddingVec(model, "baseball is a great sport");
+            List<Float> one = getEmbeddingVec(model, "I like the Java programming language.");
+            List<Float> two = getEmbeddingVec(model, "Tonight is pizza night at the baseball stadium.");
 
             double similarity = cosineSimilarity(FloatList2doubleArray(one), FloatList2doubleArray(two));
             System.out.println("Cosine Similarity: " + similarity);
-            System.out.println("Cosine Distance: " + (1 - similarity));
+            //System.out.println("Cosine Distance: " + (1 - similarity));
         }
 
         public static List<Float> getEmbeddingVec(EmbeddingModel model, String input) {

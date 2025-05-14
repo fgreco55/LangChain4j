@@ -1,5 +1,5 @@
 
-import dev.langchain4j.model.chat.ChatLanguageModel;
+import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.input.Prompt;
 import dev.langchain4j.model.input.PromptTemplate;
 import dev.langchain4j.model.openai.OpenAiChatModel;
@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class SimpleTemplate {
     public static void main(String[] args) {
-        ChatLanguageModel cmodel = OpenAiChatModel.builder()
+        ChatModel cmodel = OpenAiChatModel.builder()
                 .apiKey(System.getenv("OPENAI_API_KEY"))
                 .modelName(OpenAiChatModelName.GPT_4_O)
                 .temperature(.3)                    // keep randomness low

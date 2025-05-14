@@ -1,6 +1,6 @@
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.model.StreamingResponseHandler;
-import dev.langchain4j.model.chat.StreamingChatLanguageModel;
+import dev.langchain4j.model.chat.StreamingChatModel;
 import dev.langchain4j.model.openai.OpenAiStreamingChatModel;
 import dev.langchain4j.model.output.Response;
 
@@ -35,7 +35,7 @@ public class StreamingChat {
                 continue;
 
             streamOn = true;
-            model.generate(cmdline, new StreamingResponseHandler<AiMessage>() {
+            model.chat(cmdline, new StreamingResponseHandler<AiMessage>() {
 
                 @Override
                 public void onNext(String token) {

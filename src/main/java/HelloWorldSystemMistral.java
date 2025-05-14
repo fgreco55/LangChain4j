@@ -1,7 +1,7 @@
 import dev.langchain4j.data.message.ChatMessage;
 import dev.langchain4j.data.message.SystemMessage;
 import dev.langchain4j.data.message.UserMessage;
-import dev.langchain4j.model.chat.ChatLanguageModel;
+import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.mistralai.MistralAiChatModelName;
 import dev.langchain4j.model.mistralai.MistralAiChatModel;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class HelloWorldSystemMistral {
     public static void main(String[] argv) {
-        ChatLanguageModel cmodel = MistralAiChatModel.builder()
+        ChatModel cmodel = MistralAiChatModel.builder()
                 .apiKey(System.getenv("MISTRAL_API_KEY"))
                 .modelName(String.valueOf(MistralAiChatModelName.OPEN_MISTRAL_7B))
                 .timeout(Duration.ofSeconds(120))

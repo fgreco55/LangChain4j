@@ -3,7 +3,7 @@ import dev.langchain4j.data.message.SystemMessage;
 import dev.langchain4j.data.message.UserMessage;
 import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
-import dev.langchain4j.model.chat.ChatLanguageModel;
+import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.model.openai.OpenAiChatModelName;
 
@@ -22,7 +22,7 @@ public class ChatContext {
                 """);
         chatMemory.add(sysmsg);
 
-        ChatLanguageModel cmodel = OpenAiChatModel.builder()
+        ChatModel cmodel = OpenAiChatModel.builder()
                 .apiKey(System.getenv("OPENAI_API_KEY"))
                 .modelName(OpenAiChatModelName.GPT_4_O)
                 .build();
@@ -37,6 +37,7 @@ public class ChatContext {
                 continue;
 
             UserMessage usrmsg = UserMessage.from(cmdline);   // create the prompt
+            chatMemory.add(usrmsg);
 
             var answer = cmodel.chat(chatMemory.messages());  // send the context as messages and save the response
             var response = answer.aiMessage().text();
@@ -44,7 +45,7 @@ public class ChatContext {
             System.out.println(response);
 
             chatMemory.add(UserMessage.from(response));     // Add the response from the assistant
-            chatMemory.add(UserMessage.from(cmdline));      // Add the prompt from the user
+            //chatMemory.add(UserMessage.from(cmdline));      // Add the prompt from the user
         }
     }
 }

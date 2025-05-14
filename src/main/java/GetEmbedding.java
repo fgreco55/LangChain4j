@@ -17,6 +17,6 @@ public class GetEmbedding {
         Response<Embedding> response = model.embed("One fish, two fish, red fish, blue fish");
         Embedding embedding = response.content();
 
-        System.out.println(embedding);
+        System.out.println(embedding.dimension() + " elements: " + embedding);
     }
 }
