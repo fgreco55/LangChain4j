@@ -7,7 +7,7 @@ import dev.langchain4j.model.output.Response;
 public class StreamingResponse {
     
     static class Simple_Prompt {
-
+// temp comment out
         /*public static void main(String[] args) {
 
             StreamingChatLanguageModel model = OpenAiStreamingChatModel.withApiKey(System.getenv("OPENAI_API_KEY"));
