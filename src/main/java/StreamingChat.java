@@ -17,12 +17,12 @@ public class StreamingChat {
         String cmdline;
 
         StreamingChat schat = new StreamingChat();
-        StreamingChatLanguageModel model = OpenAiStreamingChatModel.withApiKey(System.getenv("OPENAI_API_KEY"));
+        //StreamingChatLanguageModel model = OpenAiStreamingChatModel.apiKey(System.getenv("OPENAI_API_KEY"));
         streamOn = false;
 
         while (true) {
 
-            userinput = new Scanner(System.in);
+            /*userinput = new Scanner(System.in);
 
             while (streamOn) {          // wait for stream completion to terminate
                 sleep(500);
@@ -53,7 +53,7 @@ public class StreamingChat {
                 public void onError(Throwable error) {
                     error.printStackTrace();
                 }
-            });
+            });*/
         }
     }
 }

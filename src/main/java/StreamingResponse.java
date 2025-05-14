@@ -8,7 +8,7 @@ public class StreamingResponse {
     
     static class Simple_Prompt {
 
-        public static void main(String[] args) {
+        /*public static void main(String[] args) {
 
             StreamingChatLanguageModel model = OpenAiStreamingChatModel.withApiKey(System.getenv("OPENAI_API_KEY"));
 
@@ -30,6 +30,6 @@ public class StreamingResponse {
                     error.printStackTrace();
                 }
             });
-        }
+        }*/
     }
 }
