@@ -1,0 +1,7 @@
+Java is widely used in financial services, web services, big data, and scientific computing.
+The language emphasizes security, with sandboxing and bytecode verification features.
+Java communities and JUGs (Java User Groups) help sustain a vibrant global developer network.
+Despite the rise of newer languages, Java remains one of the most popular and versatile programming languages in the world.
+Python is a high-level, interpreted language known for its readability and simplicity.
+Major League Baseball (MLB) is the top professional baseball league in the United States and Canada.
+Baseball is known as "America’s pastime" and holds deep cultural and historical significance in the United States.

@@ -1,0 +1,45 @@
+Java is a high-level, object-oriented programming language developed by Sun Microsystems in 1995.
+It was designed with the philosophy of "write once, run anywhere," thanks to the Java Virtual Machine (JVM).
+Java code is compiled into bytecode, which the JVM interprets or compiles at runtime.
+The language syntax is heavily influenced by C and C++.
+Java is statically typed, meaning variable types must be declared at compile time.
+It supports automatic memory management and garbage collection, reducing the risk of memory leaks.
+Java is known for its robustness, portability, and strong backward compatibility.
+It features a rich standard library (the Java API) that includes utilities for collections, I/O, networking, and concurrency.
+Java introduced multithreading support natively, which makes concurrent programming more accessible.
+Since Java 8, the language has supported functional programming features, including lambdas and streams.
+Java is commonly used for building enterprise-scale applications, particularly when utilizing the Spring framework.
+It powers Android development through a customized version of the JVM called the Android Runtime (AT).
+Java’s platform independence is achieved through its use of bytecode and the JVM across different systems.
+Java is governed by the OpenJDK project and stewarded by Oracle, with contributions from many vendors.
+Java 21 is a long-term support (LTS) release, continuing the tradition of stability-focused LTS versions.
+Modern Java releases follow a 6-month cadence, enabling faster language evolution.
+Java supports modular programming via the Java Platform Module System introduced in Java 9.
+Features like records, pattern matching, and sealed classes are part of Project Amber, enhancing developer productivity.
+Java's ecosystem includes popular build tools like Maven and Gradle.
+JUnit is the de facto standard framework for unit testing in Java.
+Java is widely used in financial services, web services, big data, and scientific computing.
+Java EE (now Jakarta EE) defines standards for building enterprise applications, including servlets, JPA, and EJB.
+The language emphasizes security, with sandboxing and bytecode verification features.
+Java communities and JUGs (Java User Groups) help sustain a vibrant global developer network.
+Despite the rise of newer languages, Java remains one of the most popular and versatile programming languages in the world.
+Python is a high-level, interpreted language known for its readability and simplicity.
+It was created by Guido van Rossum and first released in 1991.
+Python uses indentation (whitespace) to define code blocks instead of braces or keywords.
+It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.
+Python has a massive standard library, often referred to as “batteries included,” covering everything from math to web services.
+It is dynamically typed, meaning variable types are determined at runtime.
+Python is widely used in data science, AI, automation, and web development.
+Popular frameworks like Django and Flask make Python a strong choice for backend web development.
+The language runs on multiple platforms and has implementations such as CPython, PyPy, and Jython.
+Python’s simplicity and community support make it a top choice for beginners and experts alike.
+Baseball is a bat-and-ball sport played between two teams of nine players each.
+The game is played over nine innings, with each team alternating between batting and fielding.
+A run is scored when a player successfully rounds all four bases and returns to home plate.
+The pitcher throws the ball toward the batter from a raised mound at the center of the diamond.
+A batter tries to hit the pitched ball into fair territory to become a runner and reach base safely.
+Defensive players can get a runner out by catching a batted ball, tagging a runner, or throwing to a base ahead of them.
+Major League Baseball (MLB) is the top professional baseball league in the United States and Canada.
+Baseball is known as "America’s pastime" and holds deep cultural and historical significance in the United States.
+Legendary players like Babe Ruth, Jackie Robinson, and Hank Aaron have shaped the history of the sport.
+In recent years, data analytics and "sabermetrics" have transformed how teams evaluate players and strategies.
