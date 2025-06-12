@@ -19,14 +19,14 @@ import static dev.langchain4j.model.openai.OpenAiEmbeddingModelName.TEXT_EMBEDDI
 public class EmbeddingInMemory {
 
     public static void main(String[] args) {
-        InMemoryEmbeddingStore<TextSegment> embeddingStore = new InMemoryEmbeddingStore<>();
+        InMemoryEmbeddingStore<TextSegment> embeddingStore = new InMemoryEmbeddingStore<>();   // in-memory embedding store
 
-        EmbeddingModel emodel = OpenAiEmbeddingModel.builder()
+        EmbeddingModel emodel = OpenAiEmbeddingModel.builder()          // Select the embedding algorithm/service
                 .apiKey(System.getenv("OPENAI_API_KEY"))
                 .modelName(TEXT_EMBEDDING_3_SMALL)
                 .build();
 
-        loadEmbeddingsFromFile(embeddingStore, emodel, "src/main/resources/local_data_small.txt");
+        loadEmbeddingsFromFile(embeddingStore, emodel, "src/main/resources/local_data_small.txt");  // load a list of strings into a local embeddings store [emodel]
 
         while (true) {
             System.out.print("query> ");
@@ -34,19 +34,19 @@ public class EmbeddingInMemory {
 
             Embedding queryEmbedding = emodel.embed(cmdline).content();
 
-            EmbeddingSearchRequest embeddingSearchRequest = EmbeddingSearchRequest.builder()
+            EmbeddingSearchRequest embeddingSearchRequest = EmbeddingSearchRequest.builder()    // Search the local embedding store for related strings
                     .queryEmbedding(queryEmbedding)
                     .maxResults(10)     // at most, find this number of matches
-                    .minScore(0.7)      // 0-1, so ignore anything below the midpoint
+                    .minScore(0.6)      // 0-1, so ignore anything below the midpoint
                     .build();
 
             List<EmbeddingMatch<TextSegment>> matches = embeddingStore.search(embeddingSearchRequest).matches();
 
             if (matches.isEmpty()) {
                 System.out.println("No matches found");
+            } else {
+                matches.forEach(em -> System.out.println(em.score() + ":" + em.embedded()));
             }
-
-            matches.forEach(em -> System.out.println(em.score() + ":" + em.embedded()));
         }
     }
 
