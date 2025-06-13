@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class ChatService {
 
     public interface ChatBot {
-        String chat(String userMessage);
+        String sendChat(String userMessage);
     }
 
     public static void main(String[] args) {
@@ -37,7 +37,7 @@ public class ChatService {
             if (cmdline.isBlank())       // If nothing, do nothing
                 continue;
 
-            System.out.println(chatBot.chat(cmdline));
+            System.out.println(chatBot.sendChat(cmdline));
         }
     }
 }
