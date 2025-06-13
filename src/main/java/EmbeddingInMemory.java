@@ -32,6 +32,9 @@ public class EmbeddingInMemory {
             System.out.print("query> ");
             String cmdline = new Scanner(System.in).nextLine();
 
+            if (cmdline.isEmpty())
+                continue;
+
             Embedding queryEmbedding = emodel.embed(cmdline).content();
 
             EmbeddingSearchRequest embeddingSearchRequest = EmbeddingSearchRequest.builder()    // Search the local embedding store for related strings
