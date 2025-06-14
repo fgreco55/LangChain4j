@@ -40,7 +40,7 @@ public class EmbeddingInMemory {
             EmbeddingSearchRequest embeddingSearchRequest = EmbeddingSearchRequest.builder()    // Search the local embedding store for related strings
                     .queryEmbedding(queryEmbedding)
                     .maxResults(10)     // at most, find this number of matches
-                    .minScore(0.6)      // 0-1, so ignore anything below the midpoint
+                    .minScore(0.7)      // 0-1, so ignore anything below the midpoint
                     .build();
 
             List<EmbeddingMatch<TextSegment>> matches = embeddingStore.search(embeddingSearchRequest).matches();
