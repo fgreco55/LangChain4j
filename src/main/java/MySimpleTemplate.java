@@ -9,7 +9,7 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SimpleTemplate {
+public class MySimpleTemplate {
     public static void main(String[] args) {
         ChatModel cmodel = OpenAiChatModel.builder()
                 .apiKey(System.getenv("OPENAI_API_KEY"))
