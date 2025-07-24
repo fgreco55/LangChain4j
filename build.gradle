@@ -9,7 +9,7 @@ repositories {
     mavenCentral()
 }
 
-def lc4jVersion = "1.0.0-beta3"
+def lc4jVersion = "1.1.0"
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.3')
@@ -21,13 +21,15 @@ dependencies {
     implementation "dev.langchain4j:langchain4j-anthropic:${lc4jVersion}"
     implementation "dev.langchain4j:langchain4j-mistral-ai:${lc4jVersion}"*/
 
-    implementation "dev.langchain4j:langchain4j:1.0.0"
-    implementation "dev.langchain4j:langchain4j-open-ai:1.0.0"
+    implementation "dev.langchain4j:langchain4j:1.1.0"
+    implementation "dev.langchain4j:langchain4j-open-ai:1.1.0"
     implementation "dev.langchain4j:langchain4j-google-ai-gemini:1.0.0-beta5"
     implementation "dev.langchain4j:langchain4j-anthropic:1.0.0-beta5"
     implementation "dev.langchain4j:langchain4j-mistral-ai:1.0.0-beta5"
 
-    implementation 'org.slf4j:slf4j-nop:2.0.7'
+    //implementation 'org.slf4j:slf4j-nop:2.0.17'
+    implementation 'ch.qos.logback:logback-classic:1.4.14'
+
 }
 
 test {
