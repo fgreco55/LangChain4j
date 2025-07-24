@@ -12,6 +12,7 @@ import dev.langchain4j.rag.RetrievalAugmentor;
 import dev.langchain4j.rag.content.retriever.EmbeddingStoreContentRetriever;
 import dev.langchain4j.service.AiServices;
 import dev.langchain4j.service.SystemMessage;
+import dev.langchain4j.store.embedding.EmbeddingStore;
 import dev.langchain4j.store.embedding.EmbeddingStoreIngestor;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
 
@@ -25,7 +26,7 @@ import java.util.stream.Collectors;
 import static dev.langchain4j.model.openai.OpenAiEmbeddingModelName.TEXT_EMBEDDING_3_SMALL;
 
 public class MiniRAGService {
-    interface Chatbot {
+    interface Assistant {
         @SystemMessage("You are a polite assistant")
         String chat(String text);
     }
@@ -58,16 +59,12 @@ public class MiniRAGService {
                 .minScore(.7)
                 .build();
 
-        RetrievalAugmentor augmentor = DefaultRetrievalAugmentor.builder()
-                .contentRetriever(retriever)
-                .build();
-
         ChatModel model = createChatModel();
 
-        Chatbot cb = AiServices.builder(Chatbot.class)
+        Assistant cb = AiServices.builder(Assistant.class)
                 .chatModel(model)
                 .chatMemory(MessageWindowChatMemory.withMaxMessages(10))
-                .retrievalAugmentor(augmentor)
+                .contentRetriever(retriever)
                 .build();
 
         while (true) {
@@ -111,4 +108,24 @@ public class MiniRAGService {
                 .build();
     }
 
+    private class Chatbot {
+        private ChatModel chatModel;
+        private EmbeddingModel embeddingModel;
+        private EmbeddingStore embeddingStore;
+        private int maxResults;
+        private int maxMemory;
+        private float minScore;
+
+        Chatbot(ChatModel chatModel, EmbeddingModel embModel, EmbeddingStore embStore, int maxres, int maxmem, float minscore) {
+            this.chatModel = chatModel;
+            this.embeddingModel = embeddingModel;
+            this.embeddingStore = embeddingStore;
+            this.maxResults = maxres;
+            this.maxMemory = maxmem;
+            this.minScore = minscore;
+        }
+        Chatbot(ChatModel chatModel) {
+            this.chatModel = chatModel;
+        }
+    }
 }
