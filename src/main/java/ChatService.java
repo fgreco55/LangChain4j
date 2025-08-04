@@ -21,11 +21,10 @@ public class ChatService {
                 .apiKey(System.getenv("OPENAI_API_KEY"))
                 .modelName(OpenAiChatModelName.GPT_4_O)
                 .build();
-        ChatMemory memory = MessageWindowChatMemory.withMaxMessages(10);
 
         ChatBot chatBot = AiServices.builder(ChatBot.class)
                 .chatModel(model)
-                .chatMemory(memory)
+                .chatMemory(MessageWindowChatMemory.withMaxMessages(10))
                 .build();
 
         while (true) {
