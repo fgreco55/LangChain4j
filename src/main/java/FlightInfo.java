@@ -10,7 +10,7 @@ import dev.langchain4j.service.AiServices;
 public class FlightInfo {
 
     interface FlightAssistant {
-        String chat(String userMessage);
+        String flightInfo(String userMessage);
     }
 
     public static void main(String[] args) {
@@ -23,7 +23,7 @@ public class FlightInfo {
                 .build();
 
         ChatMemory cm = MessageWindowChatMemory.withMaxMessages(10);
-        cm.add(SystemMessage.from("You are a helpful, polite flight agent.  Only use the methods I have described."));  // just for illustrative purposes
+        cm.add(SystemMessage.from("You are a helpful, and informative flight agent.  Only use the methods I have described."));  // just for illustrative purposes
 
         FlightAssistant assistant = AiServices.builder(FlightAssistant.class)
                 .chatModel(model)
@@ -33,13 +33,13 @@ public class FlightInfo {
 
         String response;
 
-        response = assistant.chat("I need the status of Flight UA1011");
+        response = assistant.flightInfo("I need the status of Flight UA1011");
         System.out.println(response);
 
-        response = assistant.chat("What type of aircraft is it?");
+        response = assistant.flightInfo("What type of aircraft is it?");
         System.out.println(response);
 
-        response = assistant.chat("What was its cost");
+        response = assistant.flightInfo("What was its cost");
         System.out.println(response);
     }
 }
