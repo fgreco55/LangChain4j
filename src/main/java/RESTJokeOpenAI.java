@@ -4,7 +4,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class Joke {
+public class RESTJokeOpenAI {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         var apiKey = System.getenv("OPENAI_API_KEY");
