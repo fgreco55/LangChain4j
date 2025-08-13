@@ -15,6 +15,7 @@ public class HelloWorld {
         ChatModel cmodel = OpenAiChatModel.builder()
                 .apiKey(apiKey)
                 .modelName(OpenAiChatModelName.GPT_4_O)
+                .maxCompletionTokens(1024)
                 .build();
 
         List<ChatMessage> messages = new ArrayList<>();
