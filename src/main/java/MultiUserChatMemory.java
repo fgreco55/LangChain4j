@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class MultiUserChatMemory {
     public interface Support {
         @SystemMessage("Respond as a helpful and polite customer support representative.")
-        String send(@MemoryId String memoryId, @UserMessage String msg);
+        String send(@MemoryId String memId, @UserMessage String msg);
     }
 
     public static void main(String[] args) {
@@ -38,7 +38,7 @@ public class MultiUserChatMemory {
             if (cmdline.isBlank())       // If nothing, do nothing
                 continue;
 
-            List<String> commands = simpleParser(cmdline);  // poor man's parser - good enough for our example
+            List<String> commands = simpleParser(cmdline);  // cheapo parser - good enough for our example
             if (commands.size() != 2)
                 continue;
 
