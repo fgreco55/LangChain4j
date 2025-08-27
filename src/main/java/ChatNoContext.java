@@ -5,7 +5,7 @@ import dev.langchain4j.model.openai.OpenAiChatModelName;
 
 import java.util.Scanner;
 
-public class Chat {
+public class ChatNoContext {
     public static void main(String[] args) {
         Scanner userinput;      // user inputted line as a Scanner
         String cmdline;
